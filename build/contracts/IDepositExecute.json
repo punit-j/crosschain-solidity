@@ -1,0 +1,1242 @@
+{
+  "contractName": "IDepositExecute",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "resourceID",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes8",
+          "name": "destinationChainID",
+          "type": "bytes8"
+        },
+        {
+          "internalType": "uint64",
+          "name": "depositNonce",
+          "type": "uint64"
+        },
+        {
+          "internalType": "address",
+          "name": "depositer",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "recipientAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "params",
+          "type": "bytes"
+        }
+      ],
+      "name": "deposit",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "resourceID",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "recipientAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "params",
+          "type": "bytes"
+        }
+      ],
+      "name": "executeProposal",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "resourceID",
+          "type": "bytes32"
+        }
+      ],
+      "name": "getAddressFromResourceId",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.6.4+commit.1dca32f3\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"resourceID\",\"type\":\"bytes32\"},{\"internalType\":\"bytes8\",\"name\":\"destinationChainID\",\"type\":\"bytes8\"},{\"internalType\":\"uint64\",\"name\":\"depositNonce\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"depositer\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"recipientAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"params\",\"type\":\"bytes\"}],\"name\":\"deposit\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"resourceID\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"recipientAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"params\",\"type\":\"bytes\"}],\"name\":\"executeProposal\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"resourceID\",\"type\":\"bytes32\"}],\"name\":\"getAddressFromResourceId\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"ChainSafe Systems.\",\"methods\":{\"deposit(bytes32,bytes8,uint64,address,address,uint256,bytes)\":{\"params\":{\"depositNonce\":\"This value is generated as an ID by the Bridge contract.\",\"depositer\":\"Address of account making the deposit in the Bridge contract.\",\"destinationChainID\":\"Chain ID deposit is expected to be bridged to.\"}}},\"title\":\"Interface for handler contracts that support deposits and deposit executions.\"},\"userdoc\":{\"methods\":{\"deposit(bytes32,bytes8,uint64,address,address,uint256,bytes)\":{\"notice\":\"It is intended that deposit are made using the Bridge contract.\"},\"executeProposal(bytes32,address,uint256,bytes)\":{\"notice\":\"It is intended that proposals are executed by the Bridge contract.\"}}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IDepositExecute.sol\":\"IDepositExecute\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IDepositExecute.sol\":{\"keccak256\":\"0x4f7df697c453b693f8148bba43e4feb98db46da2603ec8419982605e7b626af9\",\"urls\":[\"bzz-raw://27ff0e407473e34924e57de54c309c2cc6393450c160229d18dee3c78ed7cb1c\",\"dweb:/ipfs/Qmd8adLADhgGET2DNw3WQXuBZvJaxFRBp2Xcxqzdh28dwh\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.6.4;\n\n/**\n    @title Interface for handler contracts that support deposits and deposit executions.\n    @author ChainSafe Systems.\n */\ninterface IDepositExecute {\n    /**\n        @notice It is intended that deposit are made using the Bridge contract.\n        @param destinationChainID Chain ID deposit is expected to be bridged to.\n        @param depositNonce This value is generated as an ID by the Bridge contract.\n        @param depositer Address of account making the deposit in the Bridge contract.\n     */\n    function deposit(\n        bytes32 resourceID,\n        bytes8 destinationChainID,\n        uint64 depositNonce,\n        address depositer,\n        address recipientAddress,\n        uint256 amount,\n        bytes calldata params\n    ) external returns (address);\n\n    /**\n        @notice It is intended that proposals are executed by the Bridge contract.\n     */\n    function executeProposal(bytes32 resourceID, address recipientAddress, uint256 amount, bytes calldata params) external;\n    function getAddressFromResourceId(bytes32 resourceID) external view returns(address);\n}\n",
+  "sourcePath": "/Users/9to5mac/Desktop/code/latoken/ethereum-crosschain-contract/contracts/interfaces/IDepositExecute.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/interfaces/IDepositExecute.sol",
+    "exportedSymbols": {
+      "IDepositExecute": [
+        4642
+      ]
+    },
+    "id": 4643,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 4601,
+        "literals": [
+          "solidity",
+          "0.6",
+          ".4"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:14"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 4602,
+          "nodeType": "StructuredDocumentation",
+          "src": "24:127:14",
+          "text": "@title Interface for handler contracts that support deposits and deposit executions.\n@author ChainSafe Systems."
+        },
+        "fullyImplemented": false,
+        "id": 4642,
+        "linearizedBaseContracts": [
+          4642
+        ],
+        "name": "IDepositExecute",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": {
+              "id": 4603,
+              "nodeType": "StructuredDocumentation",
+              "src": "184:344:14",
+              "text": "@notice It is intended that deposit are made using the Bridge contract.\n@param destinationChainID Chain ID deposit is expected to be bridged to.\n@param depositNonce This value is generated as an ID by the Bridge contract.\n@param depositer Address of account making the deposit in the Bridge contract."
+            },
+            "functionSelector": "75cd9cce",
+            "id": 4622,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "deposit",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 4618,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4605,
+                  "name": "resourceID",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 4622,
+                  "src": "559:18:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 4604,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "559:7:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4607,
+                  "name": "destinationChainID",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 4622,
+                  "src": "587:25:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes8",
+                    "typeString": "bytes8"
+                  },
+                  "typeName": {
+                    "id": 4606,
+                    "name": "bytes8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "587:6:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes8",
+                      "typeString": "bytes8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4609,
+                  "name": "depositNonce",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 4622,
+                  "src": "622:19:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  },
+                  "typeName": {
+                    "id": 4608,
+                    "name": "uint64",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "622:6:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint64",
+                      "typeString": "uint64"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4611,
+                  "name": "depositer",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 4622,
+                  "src": "651:17:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4610,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "651:7:14",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4613,
+                  "name": "recipientAddress",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 4622,
+                  "src": "678:24:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4612,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "678:7:14",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4615,
+                  "name": "amount",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 4622,
+                  "src": "712:14:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4614,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "712:7:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4617,
+                  "name": "params",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 4622,
+                  "src": "736:21:14",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 4616,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "736:5:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "549:214:14"
+            },
+            "returnParameters": {
+              "id": 4621,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4620,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 4622,
+                  "src": "782:7:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4619,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "782:7:14",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "781:9:14"
+            },
+            "scope": 4642,
+            "src": "533:258:14",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": {
+              "id": 4623,
+              "nodeType": "StructuredDocumentation",
+              "src": "797:94:14",
+              "text": "@notice It is intended that proposals are executed by the Bridge contract."
+            },
+            "functionSelector": "728e218f",
+            "id": 4634,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "executeProposal",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 4632,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4625,
+                  "name": "resourceID",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 4634,
+                  "src": "921:18:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 4624,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "921:7:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4627,
+                  "name": "recipientAddress",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 4634,
+                  "src": "941:24:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4626,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "941:7:14",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4629,
+                  "name": "amount",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 4634,
+                  "src": "967:14:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4628,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "967:7:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4631,
+                  "name": "params",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 4634,
+                  "src": "983:21:14",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 4630,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "983:5:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "920:85:14"
+            },
+            "returnParameters": {
+              "id": 4633,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1014:0:14"
+            },
+            "scope": 4642,
+            "src": "896:119:14",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "a7a3fb40",
+            "id": 4641,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAddressFromResourceId",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 4637,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4636,
+                  "name": "resourceID",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 4641,
+                  "src": "1054:18:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 4635,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1054:7:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1053:20:14"
+            },
+            "returnParameters": {
+              "id": 4640,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4639,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 4641,
+                  "src": "1096:7:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4638,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1096:7:14",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1095:9:14"
+            },
+            "scope": 4642,
+            "src": "1020:85:14",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 4643,
+        "src": "152:955:14"
+      }
+    ],
+    "src": "0:1108:14"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/interfaces/IDepositExecute.sol",
+      "exportedSymbols": {
+        "IDepositExecute": [
+          4642
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.6",
+            ".4"
+          ]
+        },
+        "id": 4601,
+        "name": "PragmaDirective",
+        "src": "0:22:14"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "interface",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            4642
+          ],
+          "name": "IDepositExecute",
+          "scope": 4643
+        },
+        "children": [
+          {
+            "attributes": {
+              "text": "@title Interface for handler contracts that support deposits and deposit executions.\n@author ChainSafe Systems."
+            },
+            "id": 4602,
+            "name": "StructuredDocumentation",
+            "src": "24:127:14"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "functionSelector": "75cd9cce",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "deposit",
+              "overrides": null,
+              "scope": 4642,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": "@notice It is intended that deposit are made using the Bridge contract.\n@param destinationChainID Chain ID deposit is expected to be bridged to.\n@param depositNonce This value is generated as an ID by the Bridge contract.\n@param depositer Address of account making the deposit in the Bridge contract."
+                },
+                "id": 4603,
+                "name": "StructuredDocumentation",
+                "src": "184:344:14"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "resourceID",
+                      "overrides": null,
+                      "scope": 4622,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 4604,
+                        "name": "ElementaryTypeName",
+                        "src": "559:7:14"
+                      }
+                    ],
+                    "id": 4605,
+                    "name": "VariableDeclaration",
+                    "src": "559:18:14"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "destinationChainID",
+                      "overrides": null,
+                      "scope": 4622,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes8",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes8",
+                          "type": "bytes8"
+                        },
+                        "id": 4606,
+                        "name": "ElementaryTypeName",
+                        "src": "587:6:14"
+                      }
+                    ],
+                    "id": 4607,
+                    "name": "VariableDeclaration",
+                    "src": "587:25:14"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "depositNonce",
+                      "overrides": null,
+                      "scope": 4622,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint64",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint64",
+                          "type": "uint64"
+                        },
+                        "id": 4608,
+                        "name": "ElementaryTypeName",
+                        "src": "622:6:14"
+                      }
+                    ],
+                    "id": 4609,
+                    "name": "VariableDeclaration",
+                    "src": "622:19:14"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "depositer",
+                      "overrides": null,
+                      "scope": 4622,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 4610,
+                        "name": "ElementaryTypeName",
+                        "src": "651:7:14"
+                      }
+                    ],
+                    "id": 4611,
+                    "name": "VariableDeclaration",
+                    "src": "651:17:14"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "recipientAddress",
+                      "overrides": null,
+                      "scope": 4622,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 4612,
+                        "name": "ElementaryTypeName",
+                        "src": "678:7:14"
+                      }
+                    ],
+                    "id": 4613,
+                    "name": "VariableDeclaration",
+                    "src": "678:24:14"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "amount",
+                      "overrides": null,
+                      "scope": 4622,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 4614,
+                        "name": "ElementaryTypeName",
+                        "src": "712:7:14"
+                      }
+                    ],
+                    "id": 4615,
+                    "name": "VariableDeclaration",
+                    "src": "712:14:14"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "params",
+                      "overrides": null,
+                      "scope": 4622,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 4616,
+                        "name": "ElementaryTypeName",
+                        "src": "736:5:14"
+                      }
+                    ],
+                    "id": 4617,
+                    "name": "VariableDeclaration",
+                    "src": "736:21:14"
+                  }
+                ],
+                "id": 4618,
+                "name": "ParameterList",
+                "src": "549:214:14"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "overrides": null,
+                      "scope": 4622,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 4619,
+                        "name": "ElementaryTypeName",
+                        "src": "782:7:14"
+                      }
+                    ],
+                    "id": 4620,
+                    "name": "VariableDeclaration",
+                    "src": "782:7:14"
+                  }
+                ],
+                "id": 4621,
+                "name": "ParameterList",
+                "src": "781:9:14"
+              }
+            ],
+            "id": 4622,
+            "name": "FunctionDefinition",
+            "src": "533:258:14"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "functionSelector": "728e218f",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "executeProposal",
+              "overrides": null,
+              "scope": 4642,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": "@notice It is intended that proposals are executed by the Bridge contract."
+                },
+                "id": 4623,
+                "name": "StructuredDocumentation",
+                "src": "797:94:14"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "resourceID",
+                      "overrides": null,
+                      "scope": 4634,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 4624,
+                        "name": "ElementaryTypeName",
+                        "src": "921:7:14"
+                      }
+                    ],
+                    "id": 4625,
+                    "name": "VariableDeclaration",
+                    "src": "921:18:14"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "recipientAddress",
+                      "overrides": null,
+                      "scope": 4634,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 4626,
+                        "name": "ElementaryTypeName",
+                        "src": "941:7:14"
+                      }
+                    ],
+                    "id": 4627,
+                    "name": "VariableDeclaration",
+                    "src": "941:24:14"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "amount",
+                      "overrides": null,
+                      "scope": 4634,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 4628,
+                        "name": "ElementaryTypeName",
+                        "src": "967:7:14"
+                      }
+                    ],
+                    "id": 4629,
+                    "name": "VariableDeclaration",
+                    "src": "967:14:14"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "params",
+                      "overrides": null,
+                      "scope": 4634,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 4630,
+                        "name": "ElementaryTypeName",
+                        "src": "983:5:14"
+                      }
+                    ],
+                    "id": 4631,
+                    "name": "VariableDeclaration",
+                    "src": "983:21:14"
+                  }
+                ],
+                "id": 4632,
+                "name": "ParameterList",
+                "src": "920:85:14"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 4633,
+                "name": "ParameterList",
+                "src": "1014:0:14"
+              }
+            ],
+            "id": 4634,
+            "name": "FunctionDefinition",
+            "src": "896:119:14"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "functionSelector": "a7a3fb40",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getAddressFromResourceId",
+              "overrides": null,
+              "scope": 4642,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "resourceID",
+                      "overrides": null,
+                      "scope": 4641,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 4635,
+                        "name": "ElementaryTypeName",
+                        "src": "1054:7:14"
+                      }
+                    ],
+                    "id": 4636,
+                    "name": "VariableDeclaration",
+                    "src": "1054:18:14"
+                  }
+                ],
+                "id": 4637,
+                "name": "ParameterList",
+                "src": "1053:20:14"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "overrides": null,
+                      "scope": 4641,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 4638,
+                        "name": "ElementaryTypeName",
+                        "src": "1096:7:14"
+                      }
+                    ],
+                    "id": 4639,
+                    "name": "VariableDeclaration",
+                    "src": "1096:7:14"
+                  }
+                ],
+                "id": 4640,
+                "name": "ParameterList",
+                "src": "1095:9:14"
+              }
+            ],
+            "id": 4641,
+            "name": "FunctionDefinition",
+            "src": "1020:85:14"
+          }
+        ],
+        "id": 4642,
+        "name": "ContractDefinition",
+        "src": "152:955:14"
+      }
+    ],
+    "id": 4643,
+    "name": "SourceUnit",
+    "src": "0:1108:14"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.6.4+commit.1dca32f3.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.9",
+  "updatedAt": "2022-08-25T11:25:21.641Z",
+  "devdoc": {
+    "author": "ChainSafe Systems.",
+    "methods": {
+      "deposit(bytes32,bytes8,uint64,address,address,uint256,bytes)": {
+        "params": {
+          "depositNonce": "This value is generated as an ID by the Bridge contract.",
+          "depositer": "Address of account making the deposit in the Bridge contract.",
+          "destinationChainID": "Chain ID deposit is expected to be bridged to."
+        }
+      }
+    },
+    "title": "Interface for handler contracts that support deposits and deposit executions."
+  },
+  "userdoc": {
+    "methods": {
+      "deposit(bytes32,bytes8,uint64,address,address,uint256,bytes)": {
+        "notice": "It is intended that deposit are made using the Bridge contract."
+      },
+      "executeProposal(bytes32,address,uint256,bytes)": {
+        "notice": "It is intended that proposals are executed by the Bridge contract."
+      }
+    }
+  }
+}

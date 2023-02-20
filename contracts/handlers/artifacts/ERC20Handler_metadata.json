@@ -1,0 +1,731 @@
+{
+	"compiler": {
+		"version": "0.6.4+commit.1dca32f3"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "_bridgeAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "_burnList",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "_contractWhitelist",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes8",
+						"name": "",
+						"type": "bytes8"
+					},
+					{
+						"internalType": "uint64",
+						"name": "",
+						"type": "uint64"
+					}
+				],
+				"name": "_depositRecords",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "_tokenAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes8",
+						"name": "_destinationChainID",
+						"type": "bytes8"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_resourceID",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "_destinationRecipientAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_depositer",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_isInitialised",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"name": "_resourceIDToTokenContractAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "_tokenContractAddressToResourceID",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newBridgeAddress",
+						"type": "address"
+					}
+				],
+				"name": "adminChangeBridgeAddress",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "resourceID",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "approve",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "resourceID",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes8",
+						"name": "destinationChainID",
+						"type": "bytes8"
+					},
+					{
+						"internalType": "uint64",
+						"name": "depositNonce",
+						"type": "uint64"
+					},
+					{
+						"internalType": "address",
+						"name": "depositer",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "recipientAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "params",
+						"type": "bytes"
+					}
+				],
+				"name": "deposit",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "resourceID",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "recipientAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "params",
+						"type": "bytes"
+					}
+				],
+				"name": "executeProposal",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "tokenAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "fundERC20",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "resourceID",
+						"type": "bytes32"
+					}
+				],
+				"name": "getAddressFromResourceId",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint64",
+						"name": "depositNonce",
+						"type": "uint64"
+					},
+					{
+						"internalType": "bytes8",
+						"name": "destId",
+						"type": "bytes8"
+					}
+				],
+				"name": "getDepositRecord",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "_tokenAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "bytes8",
+								"name": "_destinationChainID",
+								"type": "bytes8"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "_resourceID",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "address",
+								"name": "_destinationRecipientAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "_depositer",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "_amount",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct ERC20Handler.DepositRecord",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "bridgeAddress",
+						"type": "address"
+					}
+				],
+				"name": "initialize",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "ownableInit",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "contractAddress",
+						"type": "address"
+					}
+				],
+				"name": "setBurnable",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "resourceID",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "contractAddress",
+						"type": "address"
+					}
+				],
+				"name": "setResource",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "tokenAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "withdraw",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"methods": {
+				"approve(bytes32,address,uint256)": {
+					"params": {
+						"amount": "Amount to approve.",
+						"resourceID": "ResourceID to be used for approval.",
+						"spender": "Spender address."
+					}
+				},
+				"deposit(bytes32,bytes8,uint64,address,address,uint256,bytes)": {
+					"details": "Depending if the corresponding {tokenAddress} for the parsed {resourceID} is marked true in {_burnList}, deposited tokens will be burned, if not, they will be locked.",
+					"params": {
+						"depositNonce": "This value is generated as an ID by the Bridge contract.",
+						"depositer": "Address of account making the deposit in the Bridge contract.",
+						"destinationChainID": "Chain ID of chain tokens are expected to be bridged to."
+					}
+				},
+				"fundERC20(address,address,uint256)": {
+					"params": {
+						"amount": "Amount of tokens to transfer.",
+						"owner": "Address of current token owner.",
+						"tokenAddress": "Address of ERC20 to transfer."
+					}
+				},
+				"getDepositRecord(uint64,bytes8)": {
+					"params": {
+						"depositNonce": "This ID will have been generated by the Bridge contract.",
+						"destId": "ID of chain deposit will be bridged to."
+					},
+					"returns": {
+						"_0": "DepositRecord which consists of: - _tokenAddress Address used when {deposit} was executed. - _destinationChainID ChainID deposited tokens are intended to end up on. - _resourceID ResourceID used when {deposit} was executed. - _destinationRecipientAddress Address tokens are intended to be deposited to on desitnation chain. - _depositer Address that initially called {deposit} in the Bridge contract. - _amount Amount of tokens that were deposited."
+					}
+				},
+				"initialize(address)": {
+					"params": {
+						"bridgeAddress": "Contract address of previously deployed Bridge."
+					}
+				},
+				"ownableInit(address)": {
+					"details": "Initializes the contract setting the deployer as the initial owner."
+				},
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner.     * NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+				},
+				"setBurnable(address)": {
+					"params": {
+						"contractAddress": "Address of contract to be used when making or executing deposits."
+					}
+				},
+				"setResource(bytes32,address)": {
+					"params": {
+						"contractAddress": "Address of contract to be called when a deposit is made and a deposited is executed.",
+						"resourceID": "ResourceID to be used when making deposits."
+					}
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				},
+				"withdraw(address,address,uint256)": {
+					"params": {
+						"amount": "The amount of ERC20 tokens to release.",
+						"recipient": "Address to release tokens to.",
+						"tokenAddress": "Address of token contract to release."
+					}
+				}
+			},
+			"title": "Handles ERC20 deposits and deposit executions."
+		},
+		"userdoc": {
+			"methods": {
+				"approve(bytes32,address,uint256)": {
+					"notice": "Used to approve spending tokens."
+				},
+				"deposit(bytes32,bytes8,uint64,address,address,uint256,bytes)": {
+					"notice": "A deposit is initiatied by making a deposit in the Bridge contract.Data passed into the function should be constructed as follows: amount                      uint256     bytes   0 - 32 recipientAddress length     uint256     bytes  32 - 64 recipientAddress            bytes       bytes  64 - END"
+				},
+				"executeProposal(bytes32,address,uint256,bytes)": {
+					"notice": "Proposal execution should be initiated when a proposal is finalized in the Bridge contract. by a relayer on the deposit's destination chain.Data passed into the function should be constructed as follows: amount                                 uint256     bytes  0 - 32 destinationRecipientAddress length     uint256     bytes  32 - 64 destinationRecipientAddress            bytes       bytes  64 - END"
+				},
+				"fundERC20(address,address,uint256)": {
+					"notice": "Used to transfer tokens into the safe to fund proposals."
+				},
+				"setBurnable(address)": {
+					"notice": "First verifies {contractAddress} is whitelisted, then sets {_burnList}[{contractAddress}] to true."
+				},
+				"setResource(bytes32,address)": {
+					"notice": "First verifies {_resourceIDToContractAddress}[{resourceID}] and {_contractAddressToResourceID}[{contractAddress}] are not already set, then sets {_resourceIDToContractAddress} with {contractAddress}, {_contractAddressToResourceID} with {resourceID}, and {_contractWhitelist} to true for {contractAddress}."
+				},
+				"withdraw(address,address,uint256)": {
+					"notice": "Used to manually release ERC20 tokens from ERC20Safe."
+				}
+			},
+			"notice": "This contract is intended to be used with the Bridge contract."
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"ethereum-crosschain-contract/contracts/handlers/ERC20Handler.sol": "ERC20Handler"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"ethereum-crosschain-contract/contracts/ERC20Safe.sol": {
+			"keccak256": "0x9ee02ac5118012958dec47803ff85786d1927f5789ddddffeb28c1dd2a38ac00",
+			"urls": [
+				"bzz-raw://6b1047976923ef7c828cbbb24abd94f8c01fd217b78b3faa419f352bb781a66b",
+				"dweb:/ipfs/QmdmnfwcVrdjiBFTFSCGbt8HxvYE27WP5QMeKa6bq4JHCV"
+			]
+		},
+		"ethereum-crosschain-contract/contracts/ExampleToken.sol": {
+			"keccak256": "0x0ee4cdccdd88d51659cb5280144e72b1131bdb08c047cd172f7c329d99d2866a",
+			"urls": [
+				"bzz-raw://89fc025b33c2e85bd2579d54d57566ee691eb2ac9fb13583121e1f664ae2455e",
+				"dweb:/ipfs/QmRAMLNLsF6BhnyspP9jiBxqAQCBnsvdkiehvg8BmTTfqS"
+			]
+		},
+		"ethereum-crosschain-contract/contracts/handlers/ERC20Handler.sol": {
+			"keccak256": "0x09f84ab03f8424613d0540f8a130d5afcd8ac5b989a905e7c8ae397c362040b1",
+			"urls": [
+				"bzz-raw://2336d3c2ae57810ee94580b4e4654b70be6789acecdcc062ce7cb65f3267b1ea",
+				"dweb:/ipfs/QmTV94ZC23mizETyXDxhPGhvUGK6cENoqgoorEydJAJUNx"
+			]
+		},
+		"ethereum-crosschain-contract/contracts/handlers/HandlerHelpers.sol": {
+			"keccak256": "0x95b0a688bfba4a1ff28ab5afdb2f9afa4d52e59d222d071a95c7cae577e7d1fd",
+			"urls": [
+				"bzz-raw://8f73ad47699de6519a029fc43ac0f3c7e0d99ffc88eb9f3ebab306a5a71fb156",
+				"dweb:/ipfs/QmWkFcZrDGbaBsyMkWBXz873o6DorzdDgtNM3jjB5ifeyQ"
+			]
+		},
+		"ethereum-crosschain-contract/contracts/interfaces/IDepositExecute.sol": {
+			"keccak256": "0x4f7df697c453b693f8148bba43e4feb98db46da2603ec8419982605e7b626af9",
+			"urls": [
+				"bzz-raw://27ff0e407473e34924e57de54c309c2cc6393450c160229d18dee3c78ed7cb1c",
+				"dweb:/ipfs/Qmd8adLADhgGET2DNw3WQXuBZvJaxFRBp2Xcxqzdh28dwh"
+			]
+		},
+		"ethereum-crosschain-contract/contracts/interfaces/IERC20.sol": {
+			"keccak256": "0x2e8705ea686254a665335a3af6fff5c54b0230bc25edbb5042d9afd586c1b8e4",
+			"urls": [
+				"bzz-raw://d136954fc26bdda0af7be7e3b90d1e91e1fb7e342b6f411016ed3d48cbcf9dc5",
+				"dweb:/ipfs/QmckSzorzGZDMMvzj1sXUvM5bYSLpDKu34dfrQFMti9BnZ"
+			]
+		},
+		"ethereum-crosschain-contract/contracts/interfaces/IERCHandler.sol": {
+			"keccak256": "0x7091acd47ace6734ad441a36fccb68efef810b3da761d61fc9a05f92b1cc26ad",
+			"urls": [
+				"bzz-raw://27903922a8686adfb12b1543814ba305ca84383706559331af75341e9cf3b29f",
+				"dweb:/ipfs/QmeRhw54mWxeAUxkNtqYMXpbYaJAdywPrbH9YQpjULmbqW"
+			]
+		},
+		"ethereum-crosschain-contract/contracts/libraries/EnumerableSet.sol": {
+			"keccak256": "0x1562cd9922fbf739edfb979f506809e2743789cbde3177515542161c3d04b164",
+			"urls": [
+				"bzz-raw://4580d57781513d98870d9738c7d39094336e0a70cdb90d68dad549c6ced466ec",
+				"dweb:/ipfs/Qmf9YZzzRFuvMnav9dgmeRUpdYMMECiZX8w25sHWVbA18V"
+			]
+		},
+		"ethereum-crosschain-contract/contracts/libraries/SafeMath.sol": {
+			"keccak256": "0xcc78a17dd88fa5a2edc60c8489e2f405c0913b377216a5b26b35656b2d0dab52",
+			"urls": [
+				"bzz-raw://526dc85e1f9b9b45830e202568d267d93dde7a4fcccf4ad7798dadcd92304d3c",
+				"dweb:/ipfs/QmaoXMB972J3cSDLtBq3xBo4jLwqD2uzXTwujtSPqkYVhR"
+			]
+		},
+		"ethereum-crosschain-contract/contracts/utils/AccessControl.sol": {
+			"keccak256": "0xec20ff83741b494306b7213466f80c2280380159d87e1ce5d5e99b15f77735c0",
+			"urls": [
+				"bzz-raw://8e13b600b29790e6f2cb18df8d918a4b4e60637084c428e2e48b592d5920ff9d",
+				"dweb:/ipfs/QmU57DJ7xhs5MEsFmq3oicrdE2A1SxBKyGRmf8qNvT9Gct"
+			]
+		},
+		"ethereum-crosschain-contract/contracts/utils/Context.sol": {
+			"keccak256": "0x8d3cb350f04ff49cfb10aef08d87f19dcbaecc8027b0bed12f3275cd12f38cf0",
+			"urls": [
+				"bzz-raw://ded47ec7c96750f9bd04bbbc84f659992d4ba901cb7b532a52cd468272cf378f",
+				"dweb:/ipfs/QmfBrGtQP7rZEqEg6Wz6jh2N2Kukpj1z5v3CGWmAqrzm96"
+			]
+		},
+		"ethereum-crosschain-contract/contracts/utils/ERC20.sol": {
+			"keccak256": "0x305e16456beb6711fb3972854e8ab19c5784356246e45bfabba0981eb061e34e",
+			"urls": [
+				"bzz-raw://802e1ec0c7516c0a3b11051c70f68bde2675384327701ddba222ec11055f22de",
+				"dweb:/ipfs/QmY7XQZjWhv6hyButtoCyceyYXfPG33E5xEkN8PDMqeAxS"
+			]
+		},
+		"ethereum-crosschain-contract/contracts/utils/ERC20Burnable.sol": {
+			"keccak256": "0x60b0547de2cd757b179484bb06c92be19e649e4db1f4c50095b9f1a102ceac86",
+			"urls": [
+				"bzz-raw://781f93e1c6965f18816f34b4061166dec0d51e8a668ff9838c6bfd7a97bbc2bb",
+				"dweb:/ipfs/QmQU1nKx9cpE34YFT6t3sPSBdDWJtNi64woWuParGiB6Wj"
+			]
+		},
+		"ethereum-crosschain-contract/contracts/utils/ERC20Pausable.sol": {
+			"keccak256": "0x339ce3f09ac3fc5890766cbdc5051e7ba3199d46fececcecc43d7ca4f4ddc9d0",
+			"urls": [
+				"bzz-raw://991c82b502ea946323d1502320b4fe5281108cb19f4d617b7840520cdadd3919",
+				"dweb:/ipfs/QmUUXaQDQmJkCuFd6dZnMt12mFfJFynHr4kh259RbdydS9"
+			]
+		},
+		"ethereum-crosschain-contract/contracts/utils/Pausable.sol": {
+			"keccak256": "0x9866d5b7e24efac6da01e06b8ddbb0719e9357fe5526a4d84c96e207497fe42e",
+			"urls": [
+				"bzz-raw://77dacaac75ecdf5a2e692e37cf8f692ca499c6d700f68641a1066593b900ee49",
+				"dweb:/ipfs/QmQbCdqZSkFySmcUU5fSkwAgkGjLw8sUpeCjvVUnpmHYtq"
+			]
+		},
+		"ethereum-crosschain-contract/contracts/utils/UpgradableOwnable.sol": {
+			"keccak256": "0x3f7ab54ed2ad71a1be17534e577012457cce7511eaff98dfc1ce9ec619f2911d",
+			"urls": [
+				"bzz-raw://1184658c0a5dac8887f7999e56458f9a2fc44046870e2dd739d82ed7fc9e9535",
+				"dweb:/ipfs/QmPdQyLik4PnNuvwSLafk8fYXabiqX435gdmZDpeowNdBK"
+			]
+		}
+	},
+	"version": 1
+}
